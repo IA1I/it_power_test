@@ -3,4 +3,3 @@ spring:
     name: test task IT Power
   liquibase:
     enabled: false
-
