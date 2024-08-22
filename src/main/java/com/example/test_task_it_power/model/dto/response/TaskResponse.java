@@ -8,4 +8,9 @@ public record TaskResponse(
         OffsetDateTime creationTime,
         String description
 ) {
+
+    public static TaskResponse of(Long id, String title, OffsetDateTime creationTime, String description) {
+
+        return new TaskResponse(id, title, creationTime, description);
+    }
 }
