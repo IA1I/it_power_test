@@ -1,5 +1,7 @@
 package com.example.test_task_it_power.model.dto.response;
 
+import com.example.test_task_it_power.model.dto.Task;
+
 import java.time.OffsetDateTime;
 
 public record TaskResponse(
@@ -9,8 +11,7 @@ public record TaskResponse(
         String description
 ) {
 
-    public static TaskResponse of(Long id, String title, OffsetDateTime creationTime, String description) {
-
-        return new TaskResponse(id, title, creationTime, description);
+    public static TaskResponse of(Task task) {
+        return new TaskResponse(task.id(), task.title(), task.creationTime(), task.description());
     }
 }

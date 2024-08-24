@@ -1,14 +1,14 @@
 package com.example.test_task_it_power.controller;
 
 import com.example.test_task_it_power.model.dto.User;
-import com.example.test_task_it_power.model.dto.request.RegisterUserRequest;
 import com.example.test_task_it_power.model.dto.response.ListUsersResponse;
-import com.example.test_task_it_power.model.dto.response.UserResponse;
 import com.example.test_task_it_power.service.UserService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -23,16 +23,10 @@ public class UserController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<ListUsersResponse> getAllUsers() {
         List<User> users = userService.getAllUsers();
 
         return new ResponseEntity<>(ListUsersResponse.of(users), HttpStatus.OK);
-    }
-
-    @PostMapping
-    public ResponseEntity<UserResponse> registerUser(@Valid @RequestBody RegisterUserRequest registerUserRequest) {
-        User user = userService.registeruser(registerUserRequest);
-
-        return new ResponseEntity<>(UserResponse.of(user), HttpStatus.CREATED);
     }
 }

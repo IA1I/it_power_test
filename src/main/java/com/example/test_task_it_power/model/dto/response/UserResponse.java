@@ -6,9 +6,9 @@ public record UserResponse(
         Long id,
         String email,
         String password,
-        String nick
+        String name
 ) {
     public static UserResponse of(User user) {
-        return new UserResponse(user.id(), user.email(), user.password(), user.nick());
+        return new UserResponse(user.id(), user.email(), user.password(), user.name());
     }
 }

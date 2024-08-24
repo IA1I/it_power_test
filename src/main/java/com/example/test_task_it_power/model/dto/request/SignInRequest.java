@@ -4,13 +4,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
-public record RegisterUserRequest(
+public record SignInRequest(
         @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
         @NotBlank(message = "Email cannot be blank")
         String email,
         @NotEmpty(message = "Password cannot be empty")
-        String password,
-        @NotEmpty(message = "Name cannot be empty")
-        String name
+        String password
 ) {
 }

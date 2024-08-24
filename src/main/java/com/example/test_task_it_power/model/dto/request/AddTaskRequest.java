@@ -9,7 +9,7 @@ public record AddTaskRequest(
         @NotBlank(message = "Title is not valid")
         String title,
         @NotNull
-        OffsetDateTime creationTime,
+        OffsetDateTime createdAt,
         @NotNull
         String description
 ) {

@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS users
     email    text UNIQUE NOT NULL,
     password text        NOT NULL,
     name     text,
+    role     text        NOT NULL,
 
     PRIMARY KEY (user_id)
 );
